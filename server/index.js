@@ -14,7 +14,7 @@ app.use(cors());
 // Set up multer for file uploads with size limits
 const upload = multer({
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB limit for portfolio and profile photos
+    fileSize: 20 * 1024 * 1024, // 20MB limit for portfolio and profile photos
   },
   storage: multer.memoryStorage(), // Store files in memory as buffer
   fileFilter: (req, file, cb) => {
