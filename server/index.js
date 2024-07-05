@@ -189,6 +189,10 @@ async function cleanup(zipPath) {
   }
 }
 
+app.get("/", (req, res) => {
+  res.send("Hello!");
+});
+
 app.post(
   "/upload-data",
   upload.fields([
