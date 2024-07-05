@@ -3,9 +3,13 @@ const multer = require("multer");
 const fs = require("fs-extra");
 const path = require("path");
 const archiver = require("archiver");
+const cors = require("cors");
 
 const app = express();
 const port = 3001; // Choose an appropriate port
+
+// Use CORS middleware
+app.use(cors());
 
 // Set up multer for file uploads with size limits
 const upload = multer({
