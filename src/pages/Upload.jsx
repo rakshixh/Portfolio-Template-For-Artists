@@ -45,7 +45,10 @@ function Upload() {
     });
 
     try {
-      await axios.post("http://localhost:3001/upload-data", data);
+      await axios.post(
+        "https://portfolio-template-for-artists.onrender.com/upload-data",
+        data
+      );
       setIsUploaded(true);
     } catch (error) {
       console.error("Error uploading data:", error);
@@ -55,7 +58,7 @@ function Upload() {
   const handleDownload = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/download-react-app",
+        "https://portfolio-template-for-artists.onrender.com/download-react-app",
         {
           responseType: "blob",
         }
