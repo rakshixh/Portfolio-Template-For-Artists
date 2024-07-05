@@ -4,6 +4,7 @@ import "./index.css";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import Upload from "./pages/Upload";
 
 const App = () => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/upload" element={<Upload />} />
         </Routes>
       </Router>
     </div>
