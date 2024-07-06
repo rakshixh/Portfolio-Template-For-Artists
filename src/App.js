@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
+import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/upload" element={<Upload />} />
         </Routes>
       </Router>
+      <Toaster />
     </div>
   );
 };
