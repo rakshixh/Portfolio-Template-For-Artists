@@ -40,14 +40,15 @@ function Upload() {
     const allFieldsFilled = Object.values(formData).every(
       (value) => value.trim() !== ""
     );
-    const atLeastOnePhoto = portfolioPhotos.length > 0;
-    return allFieldsFilled && atLeastOnePhoto;
+    const profilePhotoSelected = profilePhoto !== null;
+    const atLeastOnePortfolioPhoto = portfolioPhotos.length > 0;
+    return allFieldsFilled && profilePhotoSelected && atLeastOnePortfolioPhoto;
   };
 
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      toast.error("Please fill all the fields!");
+      toast.error("Please fill all the fields and upload all required images!");
       return;
     }
 
@@ -73,8 +74,8 @@ function Upload() {
         toast.promise(
           new Promise((resolve) => {
             setTimeout(() => {
-              resolve(); // Resolve the promise after 12 seconds
-            }, 12000); // 12 seconds delay
+              resolve(); // Resolve the promise after 10 seconds
+            }, 10000); // 10 seconds delay
           }),
           {
             loading: "Downloading portfolio...",
@@ -205,7 +206,7 @@ function Upload() {
             />
           </div>
           <button type="submit" className={UploadCSS.submitButton}>
-            Download Portfolio
+            Upload Data
           </button>
         </form>
         <button
