@@ -209,11 +209,13 @@ app.post(
       await updateDataJs(req);
 
       // Step 3: Send success response
-      res.status(200).send("Successfully uploaded files and updated Data.js");
+      res.status(200).send({ message: "Files uploaded successfully" });
       console.log("Files uploaded and Data.js updated successfully");
     } catch (error) {
       console.error("Error handling /upload-data request:", error);
-      res.status(500).send(`Internal Server Error: ${error.message}`);
+      res
+        .status(200)
+        .send({ message: "Internal Server Error, Error uploading files" });
     }
   }
 );
@@ -231,7 +233,9 @@ app.get("/download-react-app", async (req, res) => {
     await cleanup(zipPath);
   } catch (error) {
     console.error("Error handling /download-react-app request:", error);
-    res.status(500).send(`Internal Server Error: ${error.message}`);
+    res
+      .status(200)
+      .send({ message: "Internal Server Error, Error downloading file" });
   }
 });
 
