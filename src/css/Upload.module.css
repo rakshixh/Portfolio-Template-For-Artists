@@ -1,0 +1,118 @@
+.MainContainer {
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.description {
+    font-weight: 500;
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.warning {
+    color: #d9534f;
+    font-size: 0.9rem;
+    /* margin-top: 15px; */
+    font-weight: 400;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup {
+    margin-bottom: 20px;
+}
+
+.label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.fileInput,
+.input,
+.textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: "Aleo", serif;
+    outline: none;
+}
+
+.fileInput {
+    border: none;
+    padding: 0;
+}
+
+.textarea {
+    height: 150px;
+}
+
+.submitButton {
+    padding: 15px 20px;
+    background-color: #222831;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .header h1 {
+        font-size: 1.2rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .warning {
+        font-size: 0.5rem;
+        text-align: justify;
+    }
+
+    .label {
+        font-size: 0.9rem;
+    }
+
+    .fileInput,
+    .input,
+    .textarea {
+        padding: 10px;
+    }
+
+    .submitButton {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+}

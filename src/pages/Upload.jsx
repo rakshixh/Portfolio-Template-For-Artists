@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
+import UploadCSS from "../css/Upload.module.css";
+import toast from "react-hot-toast";
 
 function Upload() {
   const [portfolioPhotos, setPortfolioPhotos] = useState([]);
@@ -15,7 +17,8 @@ function Upload() {
     AboutTextParagraph2: "",
     AboutButtonText: "",
   });
-  const [isUploaded, setIsUploaded] = useState(false);
+
+  const downloadButtonRef = useRef(null);
 
   const handleFileChange = (e) => {
     if (e.target.name === "profilePhoto") {
@@ -33,8 +36,21 @@ function Upload() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const validateForm = () => {
+    const allFieldsFilled = Object.values(formData).every(
+      (value) => value.trim() !== ""
+    );
+    const atLeastOnePhoto = portfolioPhotos.length > 0;
+    return allFieldsFilled && atLeastOnePhoto;
+  };
+
+  const handleUpload = async (e) => {
     e.preventDefault();
+    if (!validateForm()) {
+      toast.error("Please fill all the fields!");
+      return;
+    }
+
     const data = new FormData();
     data.append("profilePhoto", profilePhoto);
     portfolioPhotos.forEach((photo) => {
@@ -45,135 +61,163 @@ function Upload() {
     });
 
     try {
-      await axios.post(
+      // Upload data
+      const uploadResponse = await axios.post(
         "https://portfolio-template-for-artists.onrender.com/upload-data",
         data
       );
-      setIsUploaded(true);
+
+      if (uploadResponse.data.message === "Files uploaded successfully") {
+        toast.success("Data uploaded successfully!");
+
+        toast.promise(
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve(); // Resolve the promise after 12 seconds
+            }, 12000); // 12 seconds delay
+          }),
+          {
+            loading: "Downloading portfolio...",
+            success: "Portfolio downloaded successfully!",
+            error: "Error downloading portfolio. Please try again.",
+          }
+        );
+
+        // Delay the download action by 10 seconds
+        setTimeout(() => {
+          if (downloadButtonRef.current) {
+            downloadButtonRef.current.click();
+          }
+        }, 10000); // 10 seconds delay
+      }
     } catch (error) {
-      console.error("Error uploading data:", error);
+      console.error("Upload error:", error);
+      toast.error("Error uploading files. Please try again.");
     }
   };
 
   const handleDownload = async () => {
     try {
-      const response = await axios.get(
+      const downloadResponse = await axios.get(
         "https://portfolio-template-for-artists.onrender.com/download-react-app",
         {
           responseType: "blob",
         }
       );
-      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const url = window.URL.createObjectURL(new Blob([downloadResponse.data]));
       const link = document.createElement("a");
       link.href = url;
       link.setAttribute("download", "ArtistPortfolio.zip");
       document.body.appendChild(link);
       link.click();
       link.remove();
+      // toast.success("Portfolio downloaded successfully!");
     } catch (error) {
-      console.error("Error downloading zip file:", error);
+      console.error("Download error:", error);
+      toast.error("Error downloading portfolio. Please try again.");
     }
   };
 
+  const labels = {
+    WebsiteTitle: "Enter Website Title",
+    HeaderTitle: "Enter Header Title",
+    FooterText: "Enter Footer Text",
+    AboutEmail: "Enter Email Address",
+    AboutEmailSubject: "Enter Email Subject",
+    AboutHeading: "Enter Heading for About Page",
+    AboutTextParagraph1: "Enter Text Paragraph 1 for About Page",
+    AboutTextParagraph2: "Enter Text Paragraph 2 for About Page",
+    AboutButtonText: "Enter Button Text for About Page",
+    profilePhoto: "Upload your Profile Photo",
+    portfolioPhotos: "Upload your Portfolio items",
+  };
+
+  const placeholders = {
+    WebsiteTitle: "This will be visible in the browser tab",
+    HeaderTitle: "This will be visible in the header",
+    FooterText: "This will be visible in the footer",
+    AboutEmail: "This will be used for About Page button",
+    AboutEmailSubject: "This will be used for About Page button",
+    AboutHeading: "This will be visible in the About Page",
+    AboutTextParagraph1: "This will be visible in the About Page",
+    AboutTextParagraph2: "This will be visible in the About Page",
+    AboutButtonText: "This will be visible in the About Page button",
+  };
+
   return (
-    <div>
-      <h1>Upload your portfolio</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Profile Photo:</label>
-          <input type="file" name="profilePhoto" onChange={handleFileChange} />
+    <div className={UploadCSS.MainContainer}>
+      <div className={UploadCSS.container}>
+        <div className={UploadCSS.header}>
+          <h1>Get Your Personalized Portfolio</h1>
+          <p className={UploadCSS.description}>
+            Upload your photos and details to create a unique, professional
+            portfolio. Start now!
+          </p>
+          <p className={UploadCSS.warning}>
+            <b>Important Notice:</b> Your email address and other personal
+            information are used solely to update portfolio's source code and
+            are not stored or utilized further. This service is designed to
+            facilitate the download and customization of portfolio's code. We do
+            not retain or process any sensitive information.
+          </p>
         </div>
-        <div>
-          <label>Portfolio Photos:</label>
-          <input
-            type="file"
-            name="portfolioPhotos"
-            multiple
-            onChange={handleFileChange}
-          />
-        </div>
-        <div>
-          <label>Website Title:</label>
-          <input
-            type="text"
-            name="WebsiteTitle"
-            value={formData.WebsiteTitle}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Header Title:</label>
-          <input
-            type="text"
-            name="HeaderTitle"
-            value={formData.HeaderTitle}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Footer Text:</label>
-          <input
-            type="text"
-            name="FooterText"
-            value={formData.FooterText}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>About Email:</label>
-          <input
-            type="text"
-            name="AboutEmail"
-            value={formData.AboutEmail}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>About Email Subject:</label>
-          <input
-            type="text"
-            name="AboutEmailSubject"
-            value={formData.AboutEmailSubject}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>About Heading:</label>
-          <input
-            type="text"
-            name="AboutHeading"
-            value={formData.AboutHeading}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>About Text Paragraph 1:</label>
-          <textarea
-            name="AboutTextParagraph1"
-            value={formData.AboutTextParagraph1}
-            onChange={handleInputChange}
-          ></textarea>
-        </div>
-        <div>
-          <label>About Text Paragraph 2:</label>
-          <textarea
-            name="AboutTextParagraph2"
-            value={formData.AboutTextParagraph2}
-            onChange={handleInputChange}
-          ></textarea>
-        </div>
-        <div>
-          <label>About Button Text:</label>
-          <input
-            type="text"
-            name="AboutButtonText"
-            value={formData.AboutButtonText}
-            onChange={handleInputChange}
-          />
-        </div>
-        <button type="submit">Upload</button>
-      </form>
-      {isUploaded && <button onClick={handleDownload}>Download ZIP</button>}
+        <form className={UploadCSS.form} onSubmit={handleUpload}>
+          {Object.keys(formData).map((key) => (
+            <div key={key} className={UploadCSS.inputGroup}>
+              <label className={UploadCSS.label}>{labels[key]}</label>
+              {key.includes("TextParagraph") ? (
+                <textarea
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleInputChange}
+                  className={UploadCSS.textarea}
+                  placeholder={placeholders[key]}
+                />
+              ) : (
+                <input
+                  type="text"
+                  name={key}
+                  value={formData[key]}
+                  onChange={handleInputChange}
+                  className={UploadCSS.input}
+                  placeholder={placeholders[key]}
+                />
+              )}
+            </div>
+          ))}
+          <div className={UploadCSS.inputGroup}>
+            <label className={UploadCSS.label}>{labels.profilePhoto}</label>
+            <input
+              type="file"
+              name="profilePhoto"
+              onChange={handleFileChange}
+              className={UploadCSS.fileInput}
+            />
+          </div>
+          <div className={UploadCSS.inputGroup}>
+            <label className={UploadCSS.label}>{labels.portfolioPhotos}</label>
+            <input
+              type="file"
+              name="portfolioPhotos"
+              multiple
+              onChange={handleFileChange}
+              className={UploadCSS.fileInput}
+            />
+          </div>
+          <button type="submit" className={UploadCSS.submitButton}>
+            Download Portfolio
+          </button>
+        </form>
+        <button
+          type="button"
+          className={UploadCSS.submitButton}
+          onClick={handleDownload}
+          style={{ display: "none" }}
+          ref={downloadButtonRef}
+        >
+          Download Portfolio Hidden
+        </button>
+      </div>
     </div>
   );
 }
