@@ -206,7 +206,7 @@ function Upload() {
             />
           </div>
           <button type="submit" className={UploadCSS.submitButton}>
-            Upload Data
+            Download Portfolio
           </button>
         </form>
         <button
