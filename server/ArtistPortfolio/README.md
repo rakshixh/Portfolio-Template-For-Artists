@@ -1,1 +1,1 @@
-# Production build of Portfolio Template For Artists
+# Portfolio Template For Artists
