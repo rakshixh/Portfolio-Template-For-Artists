@@ -52,7 +52,7 @@ function Upload() {
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      toast.error("Please fill all the fields and upload all required images!");
+      toast.error("Fill all fields and upload images!");
       return;
     }
 
