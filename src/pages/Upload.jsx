@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import axios from "axios";
 import UploadCSS from "../css/Upload.module.css";
 import toast from "react-hot-toast";
+import Loader from "../components/Loader";
 
 function Upload() {
   const [portfolioPhotos, setPortfolioPhotos] = useState([]);
@@ -19,6 +20,9 @@ function Upload() {
   });
 
   const downloadButtonRef = useRef(null);
+  const profilePhotoRef = useRef(null);
+  const portfolioPhotosRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = (e) => {
     if (e.target.name === "profilePhoto") {
@@ -61,6 +65,8 @@ function Upload() {
       data.append(key, formData[key]);
     });
 
+    setLoading(true);
+
     try {
       // Upload data
       const uploadResponse = await axios.post(
@@ -69,30 +75,18 @@ function Upload() {
       );
 
       if (uploadResponse.data.message === "Files uploaded successfully") {
-        toast.success("Data uploaded successfully!");
-
-        toast.promise(
-          new Promise((resolve) => {
-            setTimeout(() => {
-              resolve(); // Resolve the promise after 10 seconds
-            }, 10000); // 10 seconds delay
-          }),
-          {
-            loading: "Downloading portfolio...",
-            success: "Portfolio downloaded successfully!",
-            error: "Error downloading portfolio. Please try again.",
-          }
-        );
-
         // Delay the download action by 10 seconds
         setTimeout(() => {
           if (downloadButtonRef.current) {
             downloadButtonRef.current.click();
           }
         }, 10000); // 10 seconds delay
+      } else {
+        setLoading(false);
       }
     } catch (error) {
       console.error("Upload error:", error);
+      setLoading(false);
       toast.error("Error uploading files. Please try again.");
     }
   };
@@ -112,9 +106,30 @@ function Upload() {
       document.body.appendChild(link);
       link.click();
       link.remove();
-      // toast.success("Portfolio downloaded successfully!");
+      setLoading(false);
+      toast.success("Portfolio downloaded successfully!");
+
+      // clear all fields
+      setFormData({
+        WebsiteTitle: "",
+        HeaderTitle: "",
+        FooterText: "",
+        AboutEmail: "",
+        AboutEmailSubject: "",
+        AboutHeading: "",
+        AboutTextParagraph1: "",
+        AboutTextParagraph2: "",
+        AboutButtonText: "",
+      });
+      if (profilePhotoRef.current) {
+        profilePhotoRef.current.value = null;
+      }
+      if (portfolioPhotosRef.current) {
+        portfolioPhotosRef.current.value = null;
+      }
     } catch (error) {
       console.error("Download error:", error);
+      setLoading(false);
       toast.error("Error downloading portfolio. Please try again.");
     }
   };
@@ -147,6 +162,7 @@ function Upload() {
 
   return (
     <div className={UploadCSS.MainContainer}>
+      {loading && <Loader />}
       <div className={UploadCSS.container}>
         <div className={UploadCSS.header}>
           <h1>Get Your Personalized Portfolio</h1>
@@ -193,6 +209,7 @@ function Upload() {
               name="profilePhoto"
               onChange={handleFileChange}
               className={UploadCSS.fileInput}
+              ref={profilePhotoRef}
             />
           </div>
           <div className={UploadCSS.inputGroup}>
@@ -203,6 +220,7 @@ function Upload() {
               multiple
               onChange={handleFileChange}
               className={UploadCSS.fileInput}
+              ref={portfolioPhotosRef}
             />
           </div>
           <button type="submit" className={UploadCSS.submitButton}>
