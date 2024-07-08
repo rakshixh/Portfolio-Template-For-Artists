@@ -4,59 +4,77 @@ Welcome to the Artist Portfolio Template! This React-based web app offers a mode
 
 ## Table of Contents
 
-- [Preview Portfolio](#preview-portfolio)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+- [Portfolio Template For Artists](#portfolio-template-for-artists)
+  - [Table of Contents](#table-of-contents)
+  - [Preview Portfolio](#preview-portfolio)
+  - [Features](#features)
+  - [Portfolio Website](#portfolio-website)
+  - [Usage \& Installation](#usage--installation)
+    - [For Non-Developers](#for-non-developers)
+    - [For Developers](#for-developers)
+  - [Credits](#credits)
+  - [License](#license)
 
 ## Preview Portfolio
 
-You can view a live preview of the portfolio [https://portfolio-template-for-artists.vercel.app/](https://portfolio-template-for-artists.vercel.app/).
+You can view a live preview of the portfolio here [https://portfolio-template-for-artists.vercel.app/](https://portfolio-template-for-artists.vercel.app/).
 
 ## Features
 
-- **Responsive Design:** Works on all devices.
-- **Dynamic Content:** Artists can easily manage their portfolio items.
+- **Responsive Design:** This website is fully responsive across all devices.
+- **Dynamic Content:** Artists can enter their data and upload portfolio items to receive a ZIP file of the source code with their content.
 
-## Installation
+## Portfolio Website
+
+> [!NOTE]
+> The Source Code for this portfolio can be found in the [Portfolio](https://github.com/rakshixh/Portfolio-Template-For-Artists/tree/main/Portfolio) folder in the repository.
+
+> [!IMPORTANT]
+> Frontend is deployed in `Vercel` where as Backend is deployed in `Render`, since both are of `free tier` sometimes there will be a `delay of 50 seconds` for response from the backend.
+
+## Usage & Installation
 
 ### For Non-Developers
 
+1. If you're an artist, photographer, or anyone wanting a portfolio to showcase your work, visit this website [https://portfolio-template-for-artists.vercel.app/upload](https://portfolio-template-for-artists.vercel.app/upload)
+2. Here enter your all `data` that you need in portfolio and upload all the `portfolio items (jpeg/jpg/png/gif)` that you want to display in portfolio to get the `zip file of the source code` with your data & portfolio items.
+3. Extract the downloaded zip file.
+4. Go to [GitHub](https://github.com/) and create your account.
+5. Follow the steps given in this [YouTube Video](https://youtu.be/P75e8DgOxn8?si=0yPqAiYlBo4MQzCq) to upload the folder of the source code you previously downloaded.
+6. Now go to [Vercel](https://vercel.com/) and create your account using GitHub.
+7. Follow the steps given in this [YouTube Video](https://youtu.be/1tE_5yKhFsY?si=UDSh4EkDa_jcQjAv) to host the portfolio for free using vercel.
+8. Note: In vercel under `Configure Project` section for `Root Directory`, click on `Edit` button and type the name of the `portfolio folder` and click on `Deploy` button.
+
+### For Developers
+
 1. Clone the repository
    ```bash
-   git clone https://github.com/your-username/artist-portfolio.git
+   git clone https://github.com/rakshixh/Portfolio-Template-For-Artists.git
    ```
-2. Navigate to the project directory
-   ```bash
-   cd artist-portfolio
-   ```
-3. Install dependencies
+2. To start the frontend development server
    ```bash
    npm install
    ```
-
-## Usage
-
-1. Start the development server
    ```bash
    npm start
    ```
-2. Open your browser and navigate to `http://localhost:3000`
+   - Open your browser and navigate to `http://localhost:3000`
+3. To start the backend server
+   ```bash
+   cd server
+   ```
+   ```bash
+   npm install
+   ```
+   ```bash
+   npm start
+   ```
+   - Open your browser and navigate to `http://localhost:3001`
 
-## Contributing
+## Credits
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes.
-4. Commit your changes (`git commit -m 'Add some feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Create a new Pull Request.
+Images used in this project are from [Unsplash](https://unsplash.com/)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/rakshixh/Portfolio-Template-For-Artists/blob/main/LICENSE) file for details.
