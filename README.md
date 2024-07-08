@@ -2,6 +2,10 @@
 
 Welcome to the Artist Portfolio Template! This React-based web app offers a modern, responsive template for artists to beautifully display their work ✨
 
+  <a href="https://discord.com/invite/33VBS64Ju5">
+    <img alt="Static Badge" src="https://img.shields.io/badge/For_Help-Discord_server-red?style=for-the-badge">
+  </a>
+
 ## Table of Contents
 
 - [Portfolio Template For Artists](#portfolio-template-for-artists)
