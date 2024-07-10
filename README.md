@@ -51,7 +51,7 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
 
 ### For Developers
 
-1. Clone the repository
+1. **Clone the repository**
 
    ```bash
    git clone https://github.com/rakshixh/Portfolio-Template-For-Artists.git
@@ -59,7 +59,7 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
 
    - Open this folder in any `code editor` & open the `terminal`.
 
-2. Entire Frontend (with upload page)
+2. **Entire Frontend (with upload page)**
 
    ```bash
    // To start the development server
@@ -71,7 +71,7 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
 
    - Open your browser and navigate to `http://localhost:3000`
 
-3. To start the **Backend server (upload and download zip api)**
+3. **To start the Backend server (upload and download zip api)**
 
    ```bash
    // Make sure to run the backend in new terminal
@@ -80,7 +80,7 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
 
    - Open your browser and navigate to `http://localhost:3001`
 
-4. Only Portfolio (Frontend)
+4. **Only Portfolio (Frontend)**
 
    ```bash
    // To start the development server
