@@ -57,7 +57,7 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
    git clone https://github.com/rakshixh/Portfolio-Template-For-Artists.git
    ```
 
-   - Open this folder in any `code editor` & open this folder in `terminal`.
+   - Open this folder in any `code editor` & open the `terminal`.
 
 2. Entire Frontend (with upload page)
 
