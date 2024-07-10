@@ -34,7 +34,7 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
 > The Source Code for this portfolio can be found in the [Portfolio](https://github.com/rakshixh/Portfolio-Template-For-Artists/tree/main/Portfolio) folder in the repository.
 
 > [!IMPORTANT]
-> Frontend is deployed in `Vercel` where as Backend is deployed in `Render`, since both are of `free tier` sometimes there will be a `delay of 50 seconds` for response from the backend.
+> Frontend is deployed in `Vercel` where as Backend is deployed in `Render`, since both are of `free tier` sometimes there will be an `error` or `delay of 50 seconds` for response from the backend.
 
 ## Usage & Installation
 
