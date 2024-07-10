@@ -16,6 +16,7 @@ Welcome to the Artist Portfolio Template! This React-based web app offers a mode
   - [Usage \& Installation](#usage--installation)
     - [For Non-Developers](#for-non-developers)
     - [For Developers](#for-developers)
+  - [Update Favicon](#update-favicon)
   - [Credits](#credits)
   - [License](#license)
 
@@ -89,6 +90,13 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
    //To build the portfolio
    npm run build-portfolio
    ```
+
+## Update Favicon
+
+1. Find the folder named `Public`.
+2. Delete the `favicon.ico`, `logo192.png` & `logo512.png`
+3. If you have an image in PNG, JPG, or JPEG format that you want to use as a favicon, simply rename it to `favicon.ico`. For example, if your image is named `mylogo.jpg`, change its name and extension to `favicon.ico`.
+4. Now, place this image inside the `public` folder. Additionally, make two more copies of the same image, rename them to `logo192.png` and `logo512.png`, and place these copies in the `public` folder as well.
 
 ## Credits
 
