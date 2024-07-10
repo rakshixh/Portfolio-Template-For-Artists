@@ -95,8 +95,8 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
 
 1. Find the folder named `Public`.
 2. Delete the `favicon.ico`, `logo192.png` & `logo512.png`
-3. If you have an image in PNG, JPG, or JPEG format that you want to use as a favicon, simply rename it to `favicon.ico`. For example, if your image is named `mylogo.jpg`, change its name and extension to `favicon.ico`. 
-![RenameToFavicon](https://github.com/rakshixh/Portfolio-Template-For-Artists/assets/83587918/e9b22d1b-3155-4b8e-a7e8-3361df6c495d)
+3. If you have an image in PNG, JPG, or JPEG format that you want to use as a favicon, simply rename it to `favicon.ico`. For example, if your image is named `mylogo.jpg`, change its name and extension to `favicon.ico`. <br>
+   ![RenameToFavicon](https://github.com/rakshixh/Portfolio-Template-For-Artists/assets/83587918/e9b22d1b-3155-4b8e-a7e8-3361df6c495d)
 4. Now, place this image inside the `public` folder. Additionally, make two more copies of the same image, rename them to `logo192.png` and `logo512.png`, and place these copies in the `public` folder as well.
 
 ## Credits
