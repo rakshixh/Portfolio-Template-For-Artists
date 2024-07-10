@@ -77,7 +77,8 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
 
 ## Credits
 
-Images used in this project are from [Unsplash](https://unsplash.com/)
+- Images used in this project are from [Unsplash](https://unsplash.com/)
+- The YouTube links above aren't collaborations or ads; I found them useful for hosting your portfolio.
 
 ## License
 
