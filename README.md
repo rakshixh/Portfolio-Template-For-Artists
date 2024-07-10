@@ -52,28 +52,43 @@ You can view a live preview of the portfolio here [https://portfolio-template-fo
 ### For Developers
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/rakshixh/Portfolio-Template-For-Artists.git
    ```
-2. To start the frontend development server
+
+   - Open this folder in any `code editor` & open this folder in `terminal`.
+
+2. Entire Frontend (with upload page)
+
    ```bash
-   npm install
-   ```
-   ```bash
+   // To start the development server
    npm start
+
+   // To build the entire frontend
+   npm run build
    ```
+
    - Open your browser and navigate to `http://localhost:3000`
-3. To start the backend server
+
+3. To start the **Backend server (upload and download zip api)**
+
    ```bash
-   cd server
+   // Make sure to run the backend in new terminal
+   npm run server
    ```
-   ```bash
-   npm install
-   ```
-   ```bash
-   npm start
-   ```
+
    - Open your browser and navigate to `http://localhost:3001`
+
+4. Only Portfolio (Frontend)
+
+   ```bash
+   // To start the development server
+   npm run portfolio
+
+   //To build the portfolio
+   npm run build-portfolio
+   ```
 
 ## Credits
 
