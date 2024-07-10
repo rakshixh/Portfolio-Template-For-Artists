@@ -20,8 +20,11 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm install && react-scripts start",
+    "server": "cd server && npm install && npm start",
+    "portfolio": "cd Portfolio && npm install && npm start",
     "build": "react-scripts build",
+    "build-portfolio": "cd Portfolio && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
