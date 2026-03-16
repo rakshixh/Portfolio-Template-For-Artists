@@ -1,1 +1,0 @@
-# Portfolio Template For Artists
