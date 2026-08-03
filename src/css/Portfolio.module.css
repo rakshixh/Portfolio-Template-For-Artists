@@ -1,12 +1,14 @@
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 0px 20px 20px 20px;
+    gap: 24px;
+    padding: 0px clamp(16px, 4vw, 32px) 32px;
 }
 
 .imageWrapper {
     position: relative;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 .image {
@@ -21,6 +23,6 @@
     .gridContainer {
         grid-template-columns: 1fr;
         padding: 20px;
-        gap: 20px;
+        gap: 18px;
     }
 }

@@ -1,13 +1,33 @@
 import React from "react";
 import PortfolioCSS from "../css/Portfolio.module.css";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
-// Dynamically import all images from the assets/images folder
-const importAll = (r) => r.keys().map(r);
-const images = importAll(
-  require.context("../assets/images", false, /\.(webp|png|jpg|jpeg|gif)$/)
+const imageModules = import.meta.glob(
+  "../assets/images/*.{webp,png,jpg,jpeg,gif}",
+  {
+    eager: true,
+    import: "default",
+  },
 );
+
+const images = Object.values(imageModules);
+
+const imageVariants = {
+  hidden: {
+    opacity: 0,
+    y: 28,
+    scale: 0.975,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 4,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 function Portfolio() {
   return (
@@ -20,26 +40,13 @@ function Portfolio() {
 }
 
 function ImageWrapper({ src, index }) {
-  const controls = useAnimation();
-  const [ref, inView] = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
-  });
-
-  React.useEffect(() => {
-    if (inView) {
-      controls.start({ opacity: 1 });
-    } else {
-      controls.start({ opacity: 0 });
-    }
-  }, [controls, inView]);
-
   return (
     <motion.div
-      ref={ref}
-      animate={controls}
-      initial={{ opacity: 0 }}
-      transition={{ duration: 1.5, ease: "easeIn" }}
+      variants={imageVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.1 }}
+      style={{ willChange: "opacity, transform" }}
       className={PortfolioCSS.imageWrapper}
     >
       <img
@@ -47,6 +54,7 @@ function ImageWrapper({ src, index }) {
         alt={`Portfolio ${index + 1}`}
         className={PortfolioCSS.image}
         draggable="false"
+        decoding="async"
       />
     </motion.div>
   );

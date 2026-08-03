@@ -4,11 +4,15 @@ import Footer from "../components/Footer";
 import AboutCSS from "../css/About.module.css";
 import data from "../Data";
 
-// Dynamically import the profile image
-const importAll = (r) => r.keys().map(r);
-const images = importAll(
-  require.context("../assets/profile", false, /\.(webp|png|jpg|jpeg|gif)$/)
+const profileModules = import.meta.glob(
+  "../assets/profile/*.{webp,png,jpg,jpeg,gif}",
+  {
+    eager: true,
+    import: "default",
+  },
 );
+
+const images = Object.values(profileModules);
 
 const profileImage = images.length > 0 ? images[0] : null;
 
