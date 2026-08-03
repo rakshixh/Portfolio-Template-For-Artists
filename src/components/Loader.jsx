@@ -5,7 +5,7 @@ function Loader() {
   return (
     <div className={styles.overlay}>
       <div className={styles.loader}></div>
-      <p className={styles.text}>Please wait, uploading data...</p>
+      <p className={styles.text}>Loading portfolio...</p>
     </div>
   );
 }
