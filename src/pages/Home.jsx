@@ -9,18 +9,23 @@ function Home() {
 
   useEffect(() => {
     const checkScrollTop = () => {
-      if (!showScroll && window.pageYOffset > 300) {
-        setShowScroll(true);
-      } else if (showScroll && window.pageYOffset <= 300) {
-        setShowScroll(false);
-      }
+      const shouldShow = window.pageYOffset > 300;
+
+      setShowScroll((previousValue) => {
+        if (previousValue === shouldShow) {
+          return previousValue;
+        }
+
+        return shouldShow;
+      });
     };
 
-    window.addEventListener("scroll", checkScrollTop);
+    checkScrollTop();
+    window.addEventListener("scroll", checkScrollTop, { passive: true });
     return () => {
       window.removeEventListener("scroll", checkScrollTop);
     };
-  }, [showScroll]);
+  }, []);
 
   return (
     <div>

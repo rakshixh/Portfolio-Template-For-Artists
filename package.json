@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.2.1",
     "@fortawesome/react-fontawesome": "github:fortawesome/react-fontawesome",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.2",
     "framer-motion": "^11.2.11",
     "hamburger-react": "^2.5.1",
@@ -15,32 +13,22 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-intersection-observer": "^9.10.3",
-    "react-router-dom": "^6.24.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-router-dom": "^6.24.0"
   },
   "scripts": {
-    "start": "npm install && react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "start:host": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "preview:host": "vite preview --host 0.0.0.0"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "type": "module",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@vitejs/plugin-react": "^6.0.5",
+    "vite": "^8.2.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "engines": {
+    "node": ">=18"
   }
 }
